@@ -10,3 +10,5 @@ sudo chmod 0755 /tmp/otus/deploy.sh
 /tmp/otus/install_ruby.sh > /tmp/install_ruby.log
 /tmp/otus/install_mongodb.sh > /tmp/install_mongo.log
 sudo su - appuser -c "/tmp/otus/deploy.sh > /tmp/deploy.log"
+
+exit 0
