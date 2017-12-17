@@ -118,3 +118,50 @@ internalhost
 | bastion          | 35.205.86.29 | 10.132.0.2 |
 | someinternalhost |              | 10.132.0.3 |
 
+
+
+
+## Homework 06
+
+Используемая команда GCloud для создания instance:
+
+```bash
+gcloud compute instances create reddit-app\
+ --boot-disk-size=10GB \
+ --image-family ubuntu-1604-lts \
+ --image-project=ubuntu-os-cloud \
+ --machine-type=g1-small \
+ --tags puma-server \
+ --restart-on-failure \
+ --zone=europe-west3-a \
+ --metadata startup-script='#!/bin/bash
+cd /tmp && wget https://raw.githubusercontent.com/Otus-DevOps-2017-11/iPrior_infra/Infra-2/startup_script.sh
+sudo chmod 0755 /tmp/startup_script.sh
+/tmp/startup_script.sh
+'
+```
+
+**или, как изначальный вариант**:
+
+```bash
+gcloud compute instances create reddit-app\
+ --boot-disk-size=10GB \
+ --image-family ubuntu-1604-lts \
+ --image-project=ubuntu-os-cloud \
+ --machine-type=g1-small \
+ --tags puma-server \
+ --restart-on-failure \
+ --zone=europe-west3-a \
+ --metadata startup-script='#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y git-core
+git clone https://github.com/Otus-DevOps-2017-11/iPrior_infra.git /tmp/otus
+cd /tmp/otus && git checkout Infra-2
+sudo chmod 0755 /tmp/otus/install_ruby.sh
+sudo chmod 0755 /tmp/otus/install_mongodb.sh
+sudo chmod 0755 /tmp/otus/deploy.sh
+/tmp/otus/install_ruby.sh > /tmp/install_ruby.log
+/tmp/otus/install_mongodb.sh > /tmp/install_mongo.log
+sudo su - appuser -c "/tmp/otus/deploy.sh > /tmp/deploy.log"
+'
+```
