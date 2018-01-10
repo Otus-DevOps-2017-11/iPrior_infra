@@ -23,3 +23,8 @@ variable "zone" {
   description = "Instance zone"
   default     = "europe-west1-b"
 }
+
+variable "project_ssh_keys" {
+  description = "Project ssh keys: list user names. SSH key file must be exists by path ~/.ssh/{USERNAME}.pub"
+  default = {}
+}

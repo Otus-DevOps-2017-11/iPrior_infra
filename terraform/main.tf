@@ -55,3 +55,17 @@ resource "google_compute_firewall" "firewall_puma" {
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
 }
+
+data "template_file" "ssh_keys_templ" {
+  count = "${length(var.project_ssh_keys)}"
+  template = "$${username}:$${cnt}"
+  vars {
+    username = "${var.project_ssh_keys[count.index]}"
+    cnt = "${file("~/.ssh/${var.project_ssh_keys[count.index]}.pub")}"
+  }
+}
+
+resource "google_compute_project_metadata_item" "ssh_keys" {
+  key = "ssh-keys"
+  value = "${join("", "${data.template_file.ssh_keys_templ.*.rendered}")}"
+}
