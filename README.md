@@ -175,9 +175,11 @@ sudo su - appuser -c "/tmp/otus/deploy.sh > /tmp/deploy.log"
 > * Опишите в коде терраформа добавление ssh ключа пользователя appuser1 в метаданные проекта. Выполните terraform apply и проверьте результат (публичный ключ можно брать пользователя appuser); 
 > * Опишите в коде терраформа добавление ssh ключей нескольких пользователей в метаданные проекта (можно просто один и тот же публичный ключ, но с разными именами пользователей, например appuser1, appuser2 и т.д.). Выполните terraform apply и проверьте результат;
 
-* в файл *main.tf* добавил ресурс `"google_compute_project_metadata_item" "ssh_keys"`
+* в файл *main.tf* добавил ресурс `"google_compute_project_metadata_item" "ssh_keys"`. `value` данного ресурса генерится с использованием функции `join` и рендеринга шаблона `"template_file" "ssh_keys_templ"` _(см.ниже)_
+* в файл *main.tf* добавил `"template_file" "ssh_keys_templ"` для генерации `value` для ресурса `"google_compute_project_metadata_item" "ssh_keys"`. Значения берутся из `project_ssh_keys` _(см.ниже)_
 * в файл *variables.tf* добавил переменную `project_ssh_keys` - список.
 Предполагается в данную переменную писать имена пользователей для добавления ssh ключей в проект, **при условии**, что файл с SSH ключем находится по пути: **~/.ssh/{USERNAME}.pub**
+
 
 Для выполнения первого пункта задания, а именно:
 
