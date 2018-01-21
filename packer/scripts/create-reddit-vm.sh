@@ -14,8 +14,6 @@ gcloud beta compute \
 	--image-project "infra-189212" \
 	--boot-disk-size "10" \
 	--boot-disk-type "pd-standard" \
-	--boot-disk-device-name "reddit-app" \
-    --metadata startup-script='#!/usr/bin/env bash
-sudo su - appuser -c "cd ~/reddit && puma -d"
-'
+	--boot-disk-device-name "reddit-app"
+
 exit 0
