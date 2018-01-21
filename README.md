@@ -166,6 +166,28 @@ sudo su - appuser -c "/tmp/otus/deploy.sh > /tmp/deploy.log"
 '
 ```
 
+
+## Homework 07
+
+Для создания базового образа (без приложения):
+
+```bash
+packer build -var-file=variables.json ./ubuntu16.json
+```
+
+Для создания образа с приложением:
+
+```bash
+packer build -var-file=variables.json ./immutable.json
+```
+
+Для создания интанса с запущенным приложением:
+
+```bash
+./create-reddit-vm.sh
+```
+
+
 ## Homework 08
 
 ### One Star
