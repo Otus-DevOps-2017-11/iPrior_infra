@@ -248,3 +248,18 @@ _наверное можно было бы не привязывать имя п
 В модули *app* и *db* добавил параметр *instance_name* - он участвует в генерации имени инстанца, тегов и т.д.
 
 В модуле *db* добавил дополнительный параметр, *app_instance_name*, который используется для создания правила firewall -a _(что бы приложение имело доступ к базе данных)_
+
+---
+
+Добавил работу с модулем **storage-bucket**
+
+При попытке использовать конфигурацию описанную в задании, появлялась ошибка:
+
+```text
+* module.storage-bucket-test.google_storage_bucket.default[1]: 1 error(s) occurred:
+
+* google_storage_bucket.default.1: googleapi: Error 409: Sorry, that name is not available. Please try a different one., conflict
+
+```
+
+пришлось переименовать "вёдра" на "otus-homework-09-01" и "otus-homework-09-02"
