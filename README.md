@@ -249,6 +249,21 @@ _наверное можно было бы не привязывать имя п
 
 В модуле *db* добавил дополнительный параметр, *app_instance_name*, который используется для создания правила firewall -a _(что бы приложение имело доступ к базе данных)_
 
+---
+
+Добавил работу с модулем **storage-bucket**
+
+При попытке использовать конфигурацию описанную в задании, появлялась ошибка:
+
+```text
+* module.storage-bucket-test.google_storage_bucket.default[1]: 1 error(s) occurred:
+
+* google_storage_bucket.default.1: googleapi: Error 409: Sorry, that name is not available. Please try a different one., conflict
+
+```
+
+пришлось переименовать "вёдра" на "otus-homework-09-01" и "otus-homework-09-02"
+
 
 ## Homework 10
 
@@ -270,5 +285,13 @@ _наверное можно было бы не привязывать имя п
 А так же gce.py вот тут: https://github.com/ansible/ansible/tree/devel/contrib/inventory
 
 Но запустить не удалось, питон падает с ошибками =|
+
+---
+
+Только сейчас _(27.01.2018)_ прочитал обновление в домашнем задании, а именно:
+
+> P.P.S. И нет, решение этого задания НЕ gce.py
+
+Выходит ~у вас два мужа~ я не понял сути задания со звездочкой
 
 
