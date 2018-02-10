@@ -311,3 +311,5 @@ Playbook -и которые использует Packer, `packer_app.yml` & `pac
 **Terraform**
 
 Добавил проброс порта 80 до приложения, что бы работало проксирование через nginx
+
+## Homework 13
