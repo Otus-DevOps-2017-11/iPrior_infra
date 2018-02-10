@@ -39,3 +39,16 @@ resource "google_compute_firewall" "firewall_puma" {
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["${var.instance_name}"]
 }
+
+resource "google_compute_firewall" "firewall_puma_http" {
+  name    = "allow-puma-http-${var.instance_name}"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["${var.instance_name}"]
+}
