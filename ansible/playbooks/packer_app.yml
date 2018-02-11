@@ -2,14 +2,5 @@
 - name: Install ruby and bundles
   hosts: all
   become: true
-  tasks:
-  # Устанавливаем Ruby
-  - name: Apt install ruby and bundles
-    apt:
-      state: present
-      update_cache: yes # выполним apt-get update перед установкой
-      name: "{{ item }}"
-    with_items:
-      - ruby-full
-      - ruby-bundler
-      - build-essential
+  roles:
+    - app
